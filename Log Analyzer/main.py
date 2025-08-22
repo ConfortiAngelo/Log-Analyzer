@@ -1,3 +1,5 @@
-from ingestion import file_reader
+from ingestion.file_reader import Reader
 
-print(file_reader.reader())
+reader = Reader()
+
+print(reader.reader())
