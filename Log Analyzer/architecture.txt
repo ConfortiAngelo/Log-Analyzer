@@ -1,0 +1,43 @@
+log_analyzer/
+│
+├── ingestion/                      # Módulo de ingesta de logs
+│   ├── file_reader.py              # Lee logs desde archivos locales (.log, .txt, .json, .csv)
+│   ├── syslog_listener.py          # Recibe logs en tiempo real por UDP/TCP (formato Syslog)
+│   ├── api_fetcher.py              # Conexión a APIs externas (ej. SIEM, WAF, Firewall)
+│   └── db_connector.py             # Conector a bases de datos (ej. PostgreSQL, SQLite)
+│
+├── processing/                     # Módulo de normalización y parsing
+│   ├── parser.py                   # Convierte logs de diferentes formatos a un formato común (JSON estandarizado)
+│   ├── enrichment.py               # Enriquecimiento de datos (ej. geolocalización IP, lookup en listas negras)
+│   └── filter.py                   # Filtrado por reglas básicas (ej. excluir "noise")
+│
+├── detection/                      # Módulo de detección de amenazas
+│   ├── rules_engine.py             # Reglas estáticas (ej. intentos fallidos > 5 = alerta)
+│   ├── anomaly_detection.py        # Detección de anomalías (estadística / machine learning simple)
+│   └── signature_matching.py       # Matching contra firmas conocidas (ej. patrones de malware o exploits)
+│
+├── storage/                        # Almacenamiento estructurado
+│   ├── database.py                 # Base de datos interna (ej. SQLite, PostgreSQL, ElasticSearch)
+│   └── models.py                   # Definición de esquemas/tablas
+│
+├── reporting/                      # Reportes y alertas
+│   ├── alert_manager.py            # Genera alertas (consola, correo, Slack, etc.)
+│   ├── report_generator.py         # Reportes en CSV, JSON o PDF
+│   └── dashboard_api.py            # API REST para consultar eventos/alertas
+│
+├── utils/                          # Herramientas auxiliares
+│   ├── config.py                   # Configuración general (rutas, credenciales, parámetros)
+│   ├── logger.py                   # Logging interno del propio sistema
+│   └── helpers.py                  # Funciones comunes
+│
+├── tests/                          # Pruebas unitarias y de integración
+│   └── test_pipeline.py
+│
+├── data/                           # Carpeta de logs de ejemplo
+│   ├── sample_syslog.log
+│   ├── sample_firewall.log
+│   └── sample_auth.log
+│
+├── main.py                         # Punto de entrada (orquesta los módulos)
+├── requirements.txt                # Dependencias
+└── README.md                       # Documentación

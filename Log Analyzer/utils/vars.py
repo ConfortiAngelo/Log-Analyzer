@@ -1,0 +1,1 @@
+path_logs = "/home/angelo/Escritorio/CURSO/Cibersecurity/LOGS"
